@@ -1,4 +1,4 @@
-package selenium_utils;
+package frontEnd_Utils;
 
 import java.io.IOException;
 import java.io.Writer;
@@ -26,7 +26,7 @@ import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
-public class Browsers {
+public class Browser {
 
 	/*
 	 * public static void main(String[] args) { getBrowser("firefox");
@@ -34,7 +34,7 @@ public class Browsers {
 	 * }
 	 */
 
-	public static WebDriver DRIVER = null;
+	
 	public static DesiredCapabilities capabilities = null;
 	/**
 	 * Method is initializing driver with defined browser properties.
@@ -44,10 +44,10 @@ public class Browsers {
 	 * @return driver Object
 	 */
 
-	static Logger log = LogManager.getLogger(Browsers.class);
+	static Logger log = LogManager.getLogger(Browser.class);
 
 	@SuppressWarnings("deprecation")
-	public static WebDriver getBrowser(String browser, String URL, int flag) {
+	public static WebDriver getBrowser(String browser, String URL, int flag , WebDriver DRIVER) {
 		if (flag == 0 || flag == 2) {
 			switch (browser) {
 			case "Firefox": {
@@ -121,54 +121,54 @@ public class Browsers {
 
 	}
 
-	public static String refresh_browsers(int flag) {
+	public static String refresh_browsers(int flag , WebDriver DRIVER) {
 		// TODO Auto-generated method stub
 		if (flag == 0 || flag == 2) {
 			DRIVER.navigate().refresh();
 			log.info("Refreshing Browser");
 		}
-		return "refresh_browsers(" + flag + ")";
+		return "refresh_browsers(" + flag + ",  Servlet_helper.getdriver())";
 	}
 
-	public static String navigate_browser_forward(int flag) {
+	public static String navigate_browser_forward(int flag , WebDriver DRIVER) {
 		// TODO Auto-generated method stub
 		if (flag == 0 || flag == 2) {
 			DRIVER.navigate().forward();
 			log.info("Navigate Browser Forward");
 		}
-		return "navigate_browser_forward(" + flag + ");\n";
+		return "navigate_browser_forward(" + flag + ", Servlet_helper.getdriver());\n";
 	}
 
-	public static String navigate_browser_backward(int flag) {
+	public static String navigate_browser_backward(int flag , WebDriver DRIVER) {
 		// TODO Auto-generated method stub
 		if (flag == 0 || flag == 2) {
 			DRIVER.navigate().back();
 			log.info("Navigate Browser Backward");
 		}
-		return "navigate_browser_backward(" + flag + ");\n";
+		return "navigate_browser_backward(" + flag + ",  Servlet_helper.getdriver());\n";
 	}
 
-	public static String close_browsers(int flag) {
+	public static String close_browsers(int flag, WebDriver DRIVER) {
 		// TODO Auto-generated method stub
 		if (flag == 0 || flag == 2) {
 			DRIVER.close();
 			DRIVER.quit();
 			log.info("Closing Browser");
 		}
-		return "close_browsers(" + flag + ");\n";
+		return "close_browsers(" + flag + ",  Servlet_helper.getdriver());\n";
 	}
 
-	public static String get_title_browsers(int flag) {
+	public static String get_title_browsers(int flag , WebDriver DRIVER) {
 		// TODO Auto-generated method stub
 		if (flag == 0 || flag == 2) {
 			log.info(DRIVER.getCurrentUrl());
 
 			log.info("Closing Browser");
 		}
-		return "close_browsers(" + flag + ");\n";
+		return "close_browsers(" + flag + ",  Servlet_helper.getdriver());\n";
 	}
 
-	public static String kill_browser_drivers(String browser, int flag) {
+	public static String kill_browser_drivers(String browser, int flag , WebDriver DRIVER) {
 		// TODO Auto-generated method stub
 		if (flag == 0 || flag == 2) {
 			switch (browser) {
@@ -207,7 +207,7 @@ public class Browsers {
 				log.info("Killing " + browser + " Drivers");
 			}
 		}
-		return "kill_browser_drivers(" + browser + "," + flag + ");\n";
+		return "kill_browser_drivers(" + browser + "," + flag + ",  Servlet_helper.getdriver());\n";
 
 	}
 
@@ -235,9 +235,5 @@ public class Browsers {
 
 	}
 */
-	private static String create_webelement(String by, String value) {
-		// TODO Auto-generated method stub
-		// DRIVER.findElement(By.id(value));
-		return "driver.findElement(By." + by + "(" + value + "))";
-	}
+	
 }

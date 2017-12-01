@@ -50,7 +50,6 @@ public class Selenium_init extends HttpServlet {
 		  
 	  HashMap<String, String> out_map = Servlet_helper.get_value(input);
 	
-	System.out.println(out_map.get(String.valueOf(0 + 10)));
 	  
 	  Servlet_helper.execute(out_map,0);
 	  

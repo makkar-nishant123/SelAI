@@ -1,11 +1,11 @@
-package selenium_utils;
+package frontEnd_Utils;
 
 import java.util.LinkedList;
 import java.util.List;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
-public class Select_Select {
+public class Dropdown_Select {
 
 	// Selecting By Index.
 	/**
@@ -126,20 +126,20 @@ public class Select_Select {
 		 * @param flag
 		 * @return
 		 */
-		public static Select_Select deselect_getAllSelectedOptions(WebElement webElement ,  int flag) {
+		public static Dropdown_Select deselect_getAllSelectedOptions(WebElement webElement ,  int flag) {
 			List<WebElement> selected_options = new LinkedList<WebElement>();
 			if (flag == 0 || flag == 2) {
 				Select select = new Select(webElement);
 				 selected_options = select.getAllSelectedOptions();
 			}
 			String method_code =  "select.getAllSelectedOptions()";
-			return new Select_Select(method_code, selected_options);
+			return new Dropdown_Select(method_code, selected_options);
 		}
 
 		private String method_code;
 		private List<WebElement> selected_options;
 		
-		public  Select_Select(String method_code, List<WebElement> selected_options) {
+		public  Dropdown_Select(String method_code, List<WebElement> selected_options) {
 			// TODO Auto-generated method stub
 			this.method_code = method_code;
 			this.selected_options = selected_options;

@@ -1,10 +1,10 @@
-package selenium_utils;
+package frontEnd_Utils;
 
 import org.openqa.selenium.security.Credentials;
 
 import utils.Servlet_helper;
 
-public class Alerts {
+public class Alert {
 
 	
 	public static String accept_alert(int flag) {

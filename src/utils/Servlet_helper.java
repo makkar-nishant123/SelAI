@@ -17,8 +17,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import selenium_utils.Browsers;
-import selenium_utils.Select_locator;
+import frontEnd_Utils.Browser;
 
 public class Servlet_helper {
 	static String method_code;
@@ -39,7 +38,7 @@ public class Servlet_helper {
 
 	public static WebDriverWait Getexplicit_wait() {
 
-		wait = new WebDriverWait(Servlet_helper.getdriver(), 5);
+		wait = new WebDriverWait(getdriver(), 5);
 		return wait;
 	}
 
@@ -63,7 +62,6 @@ public class Servlet_helper {
 
 	private static String validate_class(HashMap<String, String> out_map) {
 		// TODO Auto-generated method stub
-		System.out.println(out_map.get("class_name"));
 		return out_map.get("class_name");
 	}
 
@@ -71,21 +69,22 @@ public class Servlet_helper {
 		// TODO Auto-generated method stub
 
 		if (!out_map.get("browser").equals(null) && !out_map.get("browser").equals("")) {
-			driver = Browsers.getBrowser(out_map.get("browser"), out_map.get("URL"), flag);
+			driver = Browser.getBrowser(out_map.get("browser"), out_map.get("URL"), flag , getdriver());
 			if (flag == 1 || flag == 2)
 				method_code = "Browsers.getBrowser(\"" + out_map.get("browser") + "\",\"" + out_map.get("URL") + "\""
-						+ flag + ");";
+						+ flag + " , Servlet_helper.getdriver());";
 		}
 
 		if (out_map.get("close_browser").equals("YES"))
-			method_code += Browsers.close_browsers(flag);
+			method_code += Browser.close_browsers(flag , getdriver());
 
 		if (out_map.get("kill_drivers").equals("YES"))
-			method_code += Browsers.kill_browser_drivers(out_map.get("browser"), flag);
-
+			method_code += Browser.kill_browser_drivers(out_map.get("browser"), flag ,  getdriver());
+		
 		for (int i = 0; i < Integer.parseInt(out_map.get("count_actions")); i++) {
 			WebElement element;
 			List<WebElement> listelement;
+			if (out_map.get(String.valueOf(i + 40)).contains(","))
 			if (!out_map.get("count_actions").contains("list")) {
 			
 				element = Select_locator.select(out_map.get(String.valueOf(i + 30)), out_map.get(String.valueOf(i + 40)), driver);

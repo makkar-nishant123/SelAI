@@ -1,4 +1,4 @@
-package selenium_utils;
+package frontEnd_Utils;
 
 import java.io.File;
 import java.io.IOException;
@@ -10,7 +10,7 @@ import org.openqa.selenium.WebDriverException;
 
 import utils.Servlet_helper;
 
-public class Capture {
+public class Screenshot {
 	
 	public String capture_screenshot_in_path(String path )
 	{

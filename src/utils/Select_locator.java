@@ -1,4 +1,4 @@
-package selenium_utils;
+package utils;
 
 import java.util.List;
 import org.openqa.selenium.By;
@@ -8,8 +8,7 @@ import org.openqa.selenium.WebElement;
 public class Select_locator {
 
 	public static WebElement select(String locator, String locator_value, WebDriver driver) {
-		System.out.println(locator);
-		System.out.println(locator_value);
+
 		WebElement return_element = driver.findElement(By.id(locator_value));
 
 		switch (locator) {

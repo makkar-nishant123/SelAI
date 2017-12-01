@@ -1,10 +1,10 @@
-package selenium_utils;
+package frontEnd_Utils;
 
 import java.util.ArrayList;
 
 import utils.Servlet_helper;
 
-public class Tabs {
+public class Tab {
 
 	
 	public static String get_All_Tabsorwindows()

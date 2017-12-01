@@ -1,9 +1,10 @@
 package  runtime_class; 
- import selenium_utils.*;
-  import org.testng.annotations.Test;
+ import org.testng.annotations.Test;
+
+import frontEnd_Utils.*;
  public class test{ 
  @Test 
  private  void test(){ 
-Browsers.getBrowser("--Select--","",0); 
+Browser.getBrowser("--Select--","",0); 
 } 
 }

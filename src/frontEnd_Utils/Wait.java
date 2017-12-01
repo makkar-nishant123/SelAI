@@ -1,4 +1,4 @@
-package selenium_utils;
+package frontEnd_Utils;
 
 import java.util.concurrent.TimeUnit;
 

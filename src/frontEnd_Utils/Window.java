@@ -1,22 +1,22 @@
-package selenium_utils;
+package frontEnd_Utils;
 
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.Point;
 import utils.Servlet_helper;
 
-public class Windows {
+public class Window {
 
 	private String method_code;
 	private Point point;
 	private Dimension dimension;
 
-	public Windows(String method_code, Point point) {
+	public Window(String method_code, Point point) {
 		// TODO Auto-generated method stub
 		this.method_code = method_code;
 		this.point = point;
 	}
 
-	public Windows(String method_code, Dimension dimension) {
+	public Window(String method_code, Dimension dimension) {
 		// TODO Auto-generated method stub
 		this.method_code = method_code;
 		this.dimension = dimension;
@@ -62,22 +62,22 @@ public class Windows {
 		return "Servlet_helper.getdriver().manage().window().setPosition(" + point + ");";
 	}
 
-	public static Windows getPosition_window(int flag) {
+	public static Window getPosition_window(int flag) {
 		Point point = null;
 		if (flag == 0 || flag == 2)
 			point = Servlet_helper.getdriver().manage().window().getPosition();
 
 		String method_code = "Servlet_helper.getdriver().manage().window().getPosition();";
-		return new Windows(method_code, point);
+		return new Window(method_code, point);
 	}
 
-	public static Windows getSize_window(int flag) {
+	public static Window getSize_window(int flag) {
 		Dimension dimension = null;
 		if (flag == 0 || flag == 2)
 			dimension = Servlet_helper.getdriver().manage().window().getSize();
 
 		String method_code = "Servlet_helper.getdriver().manage().window().getSize();";
-		return new Windows(method_code, dimension);
+		return new Window(method_code, dimension);
 	}
 
 }
