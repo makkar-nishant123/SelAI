@@ -84,7 +84,7 @@ public class Servlet_helper {
 		for (int i = 0; i < Integer.parseInt(out_map.get("count_actions")); i++) {
 			WebElement element;
 			List<WebElement> listelement;
-			if (out_map.get(String.valueOf(i + 40)).contains(","))
+			if (out_map.get(String.valueOf(i + 40)).contains("&"))
 			if (!out_map.get("count_actions").contains("list")) {
 			
 				element = Select_locator.select(out_map.get(String.valueOf(i + 30)), out_map.get(String.valueOf(i + 40)), driver);
