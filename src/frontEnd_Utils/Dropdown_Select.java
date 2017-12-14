@@ -15,8 +15,8 @@ public class Dropdown_Select {
 	 * @param flag
 	 * @return
 	 */
-	public static String select_by_id(WebElement webElement, int index, int flag) {
-		if (flag == 0 || flag == 2) {
+	public static String select_by_id(Map<String, Object> param) {
+		if (param.get("flag").equals(0) || param.get("flag").equals(2)) {
 			Select select = new Select(webElement);
 			select.selectByIndex(index);
 		}
@@ -31,8 +31,8 @@ public class Dropdown_Select {
 	 * @param flag
 	 * @return
 	 */
-	public static String select_by_value(WebElement webElement, String value, int flag) {
-		if (flag == 0 || flag == 2) {
+	public static String select_by_value(Map<String, Object> param) {
+		if (param.get("flag").equals(0) || param.get("flag").equals(2)) {
 			Select select = new Select(webElement);
 			select.selectByValue(value);
 		}
@@ -47,8 +47,8 @@ public class Dropdown_Select {
 	 * @param flag
 	 * @return
 	 */
-	public static String select_by_VisibleText(WebElement webElement, String text, int flag) {
-		if (flag == 0 || flag == 2) {
+	public static String select_by_VisibleText(Map<String, Object> param) {
+		if (param.get("flag").equals(0) || param.get("flag").equals(2)) {
 			Select select = new Select(webElement);
 			select.selectByVisibleText(text);
 		}
@@ -63,8 +63,8 @@ public class Dropdown_Select {
 	 * @param flag
 	 * @return
 	 */
-	public static String select_deselectAll(WebElement webElement, int flag) {
-		if (flag == 0 || flag == 2) {
+	public static String select_deselectAll(Map<String, Object> param) {
+		if (param.get("flag").equals(0) || param.get("flag").equals(2)) {
 			Select select = new Select(webElement);
 			select.deselectAll();
 		}
@@ -79,8 +79,8 @@ public class Dropdown_Select {
 	 * @param flag
 	 * @return
 	 */
-	public static String deselect_by_id(WebElement webElement, int index, int flag) {
-		if (flag == 0 || flag == 2) {
+	public static String deselect_by_id(Map<String, Object> param) {
+		if (param.get("flag").equals(0) || param.get("flag").equals(2)) {
 			Select select = new Select(webElement);
 			select.deselectByIndex(index);
 		}
@@ -95,8 +95,8 @@ public class Dropdown_Select {
 	 * @param flag
 	 * @return
 	 */
-	public static String deselect_by_value(WebElement webElement, String value, int flag) {
-		if (flag == 0 || flag == 2) {
+	public static String deselect_by_value(Map<String, Object> param) {
+		if (param.get("flag").equals(0) || param.get("flag").equals(2)) {
 			Select select = new Select(webElement);
 			select.deselectByValue(value);
 		}
@@ -111,8 +111,8 @@ public class Dropdown_Select {
 	 * @param flag
 	 * @return
 	 */
-	public static String deselect_by_VisibleText(WebElement webElement, String text, int flag) {
-		if (flag == 0 || flag == 2) {
+	public static String deselect_by_VisibleText(Map<String, Object> param) {
+		if (param.get("flag").equals(0) || param.get("flag").equals(2)) {
 			Select select = new Select(webElement);
 			select.deselectByVisibleText(text);
 		}
@@ -126,9 +126,9 @@ public class Dropdown_Select {
 		 * @param flag
 		 * @return
 		 */
-		public static Dropdown_Select deselect_getAllSelectedOptions(WebElement webElement ,  int flag) {
+		public static Dropdown_Select deselect_getAllSelectedOptions(Map<String, Object> param) {
 			List<WebElement> selected_options = new LinkedList<WebElement>();
-			if (flag == 0 || flag == 2) {
+			if (param.get("flag").equals(0) || param.get("flag").equals(2)) {
 				Select select = new Select(webElement);
 				 selected_options = select.getAllSelectedOptions();
 			}
@@ -139,7 +139,7 @@ public class Dropdown_Select {
 		private String method_code;
 		private List<WebElement> selected_options;
 		
-		public  Dropdown_Select(String method_code, List<WebElement> selected_options) {
+		public  Dropdown_Select(Map<String, Object> param) {
 			// TODO Auto-generated method stub
 			this.method_code = method_code;
 			this.selected_options = selected_options;
