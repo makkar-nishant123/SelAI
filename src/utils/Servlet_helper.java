@@ -84,21 +84,23 @@ public class Servlet_helper {
 		for (int i = 0; i < Integer.parseInt(out_map.get("count_actions")); i++) {
 			WebElement element;
 			List<WebElement> listelement;
-			if (out_map.get(String.valueOf(i + 40)).contains("&"))
-			if (!out_map.get("count_actions").contains("list")) {
-			
-				element = Select_locator.select(out_map.get(String.valueOf(i + 30)), out_map.get(String.valueOf(i + 40)), driver);
-				method_code += Call_methods.frame_class_method_param(out_map.get(String.valueOf(i + 10)), out_map.get(String.valueOf(i + 20)), out_map.get(String.valueOf(i + 50)),
-						out_map.get(String.valueOf(i + 60)), element, flag, method_code);
-
-			} else {
-				
+			//if (out_map.get(String.valueOf(i + 40)).contains("&"))
+			if (out_map.get("count_actions").contains("list")) {
 				listelement = Select_locator.select_elements(out_map.get(String.valueOf(i + 30)), out_map.get(String.valueOf(i + 40)), driver);
 				method_code += Call_methods.frame_class_method_param(out_map.get(String.valueOf(i + 10)), out_map.get(String.valueOf(i + 20)), out_map.get(String.valueOf(i + 50)),
 						out_map.get(String.valueOf(i + 60)), listelement, flag, method_code);
+				
+
+			} else {
+				element = Select_locator.select(out_map.get(String.valueOf(i + 30)), out_map.get(String.valueOf(i + 40)), driver);
+				method_code += Call_methods.frame_class_method_param(out_map.get(String.valueOf(i + 10)), out_map.get(String.valueOf(i + 20)), out_map.get(String.valueOf(i + 50)),
+						out_map.get(String.valueOf(i + 60)), element, flag, method_code);
+				
 			}
 		}
-
+		
+		
+		
 		if (flag == 1 || flag == 2)
 			Create_runtime.create_Method(validate_class(out_map), out_map.get("method_name"), method_code);
 	}

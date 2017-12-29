@@ -18,6 +18,23 @@ public class Mouse {
 	}
 	
 	
+	/**
+	 * @author NMakkar
+	 * @param webElement
+	 * @param flag
+	 * @return
+	 */
+	public static String Submit(Map<String, Object> param) {
+		WebElement webElement = (WebElement) param.get("element");
+		
+		if (param.get("flag").equals(0) || param.get("flag").equals(2))
+			webElement.submit();
+		
+		String result_webelement = Helper.fetch_webelement_string(webElement);
+		return result_webelement + ".submit()";
+	}
+
+	
 	// Click without Action class.
 	/**
 	 * @author NMakkar
@@ -25,7 +42,7 @@ public class Mouse {
 	 * @param flag
 	 * @return
 	 */
-	public static String click(Map<String, Object> param) {
+	public static String Click(Map<String, Object> param) {
 		WebElement webElement = (WebElement) param.get("element");
 		
 		if (param.get("flag").equals(0) || param.get("flag").equals(2))

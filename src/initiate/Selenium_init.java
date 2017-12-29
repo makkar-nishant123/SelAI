@@ -44,9 +44,7 @@ public class Selenium_init extends HttpServlet {
 	
 	  public static void main(String[] args) { 
 		  String input =
-			  "[{\"name\":\"type_e\",\"value\":\"Execute\"},{\"name\":\"browser\",\"value\":\"Chrome\"},{\"name\":\"URL\",\"value\":\"http://www.fb.com\"},{\"name\":\"count_actions\",\"value\":\"1\"},{\"name\":\"close_browser\",\"value\":\"NO\"},{\"name\":\"kill_drivers\",\"value\":\"NO\"}][{\"name\":\"10\",\"value\":\"Keyboard\"},{\"name\":\"20\",\"value\":\"write_text\"},{\"name\":\"30\",\"value\":\"id\"},{\"name\":\"40\",\"value\":\"email\"},{\"name\":\"50\",\"value\":\"sdfdsfsd\"},{\"name\":\"60\",\"value\":\"\"}]";
-		  //input = input.replace("", newChar)
-		  
+				  "[{\"name\":\"type_e\",\"value\":\"Execute\"},{\"name\":\"browser\",\"value\":\"Chrome\"},{\"name\":\"URL\",\"value\":\"https://www.joecolantonio.com\"},{\"name\":\"count_actions\",\"value\":\"3\"},{\"name\":\"close_browser\",\"value\":\"NO\"},{\"name\":\"kill_drivers\",\"value\":\"NO\"}][{\"name\":\"10\",\"value\":\"Keyboard\"},{\"name\":\"20\",\"value\":\"write_text\"},{\"name\":\"30\",\"value\":\"xpath\"},{\"name\":\"40\",\"value\":\"(.//*[@name='fields[first_name]'])[1]\"},{\"name\":\"50\",\"value\":\"sdfsfgs\"},{\"name\":\"60\",\"value\":\"\"},{\"name\":\"11\",\"value\":\"Keyboard\"},{\"name\":\"21\",\"value\":\"write_text\"},{\"name\":\"31\",\"value\":\"xpath\"},{\"name\":\"41\",\"value\":\"(.//*[@name='fields[email]'])[1]\"},{\"name\":\"51\",\"value\":\"test@gmail.com\"},{\"name\":\"61\",\"value\":\"\"},{\"name\":\"12\",\"value\":\"Mouse\"},{\"name\":\"22\",\"value\":\"Click\"},{\"name\":\"32\",\"value\":\"name\"},{\"name\":\"42\",\"value\":\"submit\"},{\"name\":\"52\",\"value\":\"\"},{\"name\":\"62\",\"value\":\"\"}]";		  
 		  
 	  HashMap<String, String> out_map = Servlet_helper.get_value(input);
 	
