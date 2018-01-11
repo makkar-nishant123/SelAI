@@ -11,13 +11,11 @@ import utils.Servlet_helper;
 
 public class Mouse {
 
-	public static Actions create_action_obj(WebDriver driver )
-	{
-		
+	public static Actions create_action_obj(WebDriver driver) {
+
 		return new Actions(driver);
 	}
-	
-	
+
 	/**
 	 * @author NMakkar
 	 * @param webElement
@@ -26,15 +24,14 @@ public class Mouse {
 	 */
 	public static String Submit(Map<String, Object> param) {
 		WebElement webElement = (WebElement) param.get("element");
-		
+
 		if (param.get("flag").equals(0) || param.get("flag").equals(2))
 			webElement.submit();
-		
+
 		String result_webelement = Helper.fetch_webelement_string(webElement);
 		return result_webelement + ".submit()";
 	}
 
-	
 	// Click without Action class.
 	/**
 	 * @author NMakkar
@@ -44,11 +41,11 @@ public class Mouse {
 	 */
 	public static String Click(Map<String, Object> param) {
 		WebElement webElement = (WebElement) param.get("element");
-		
+
 		if (param.get("flag").equals(0) || param.get("flag").equals(2))
 			webElement.click();
-		
 		String result_webelement = Helper.fetch_webelement_string(webElement);
+
 		return result_webelement + ".click()";
 	}
 
@@ -60,7 +57,7 @@ public class Mouse {
 	 * @return
 	 */
 	public static String mouse_clickandhold(Map<String, Object> param) {
-		
+
 		if (param.get("flag").equals(0) || param.get("flag").equals(2))
 			create_action_obj(Servlet_helper.getdriver()).clickAndHold().build().perform();
 		return "new Actions(Servlet_helper.getdriver()).clickAndHold().build().perform();\n";
@@ -80,7 +77,8 @@ public class Mouse {
 		if (param.get("flag").equals(0) || param.get("flag").equals(2))
 			create_action_obj(Servlet_helper.getdriver()).clickAndHold(webElement).build().perform();
 		String result_webelement = Helper.fetch_webelement_string(webElement);
-		return "create_action_obj(Servlet_helper.getdriver()).clickAndHold(" + result_webelement + ").build().perform();";
+		return "create_action_obj(Servlet_helper.getdriver()).clickAndHold(" + result_webelement
+				+ ").build().perform();";
 	}
 
 	// Click with Action class and with webelement
@@ -128,7 +126,8 @@ public class Mouse {
 		if (param.get("flag").equals(0) || param.get("flag").equals(2))
 			create_action_obj(Servlet_helper.getdriver()).contextClick(webElement).build().perform();
 		String result_webelement = Helper.fetch_webelement_string(webElement);
-		return "create_action_obj(Servlet_helper.getdriver()).contextClick(" + result_webelement + ").build().perform();";
+		return "create_action_obj(Servlet_helper.getdriver()).contextClick(" + result_webelement
+				+ ").build().perform();";
 	}
 
 	// ContextClick with Action class and without webelement
@@ -139,7 +138,7 @@ public class Mouse {
 	 * @return
 	 */
 	public static String mouse_contextClick(Map<String, Object> param) {
-		
+
 		if (param.get("flag").equals(0) || param.get("flag").equals(2))
 			create_action_obj(Servlet_helper.getdriver()).contextClick().build().perform();
 		return "create_action_obj(Servlet_helper.getdriver()).contextClick().build().perform();";
@@ -159,7 +158,8 @@ public class Mouse {
 		if (param.get("flag").equals(0) || param.get("flag").equals(2))
 			create_action_obj(Servlet_helper.getdriver()).doubleClick(webElement).build().perform();
 		String result_webelement = Helper.fetch_webelement_string(webElement);
-		return "create_action_obj(Servlet_helper.getdriver()).doubleClick(" + result_webelement + ").build().perform();";
+		return "create_action_obj(Servlet_helper.getdriver()).doubleClick(" + result_webelement
+				+ ").build().perform();";
 	}
 
 	// doubleClick with Action class and without webelement
@@ -185,12 +185,13 @@ public class Mouse {
 	 */
 	public static String mouse_dragdrop_webelement(Map<String, Object> param) {
 		String[] webElement_string = param.get("element").toString().split(",");
-		
+
 		if (param.get("flag").equals(0) || param.get("flag").equals(2))
 			create_action_obj(Servlet_helper.getdriver()).dragAndDrop(webElement[0], webElement[1]).build().perform();
 		String result_webelement0 = Helper.fetch_webelement_string(webElement[0]) + ",";
 		String result_webelement1 = Helper.fetch_webelement_string(webElement[1]);
-		return "create_action_obj(Servlet_helper.getdriver()).dragAndDrop(" + result_webelement0 + result_webelement1 + ").build().perform();";
+		return "create_action_obj(Servlet_helper.getdriver()).dragAndDrop(" + result_webelement0 + result_webelement1
+				+ ").build().perform();";
 	}
 
 	// Drop with Action class and with Webelement and offset
@@ -204,10 +205,12 @@ public class Mouse {
 	 */
 	public static String mouse_dragdrop(Map<String, Object> param) {
 		if (param.get("flag").equals(0) || param.get("flag").equals(2))
-			create_action_obj(Servlet_helper.getdriver()).dragAndDropBy(webElement, offset[0], offset[1]).build().perform();
+			create_action_obj(Servlet_helper.getdriver()).dragAndDropBy(webElement, offset[0], offset[1]).build()
+			.perform();
 		String result_webelement = Helper.fetch_webelement_string(webElement) + "," + offset[0] + "," + offset[1];
 
-		return "create_action_obj(Servlet_helper.getdriver()).dragAndDropBy(" + result_webelement + ").build().perform();";
+		return "create_action_obj(Servlet_helper.getdriver()).dragAndDropBy(" + result_webelement
+				+ ").build().perform();";
 	}
 
 	// KeyDown with Action class and data
@@ -332,8 +335,8 @@ public class Mouse {
 
 	/*
 	 * public static String mouse_pause_duration(long duration, int flag,
-	 * Actions action) { if (param.get("flag").equals(0) || param.get("flag").equals(2))
-	 * action.pause(duration).build().perform();
+	 * Actions action) { if (param.get("flag").equals(0) ||
+	 * param.get("flag").equals(2)) action.pause(duration).build().perform();
 	 * 
 	 * return "action.pause(" + duration + ").build().perform();"; }
 	 */
@@ -352,7 +355,8 @@ public class Mouse {
 		if (param.get("flag").equals(0) || param.get("flag").equals(2))
 			create_action_obj(Servlet_helper.getdriver()).moveToElement(webElement).build().perform();
 		String result_webelement = Helper.fetch_webelement_string(webElement);
-		return "create_action_obj(Servlet_helper.getdriver()).moveToElement(" + result_webelement + ").build().perform();";
+		return "create_action_obj(Servlet_helper.getdriver()).moveToElement(" + result_webelement
+				+ ").build().perform();";
 	}
 
 	// moveToElement with Action class , webElement and offset
@@ -387,7 +391,8 @@ public class Mouse {
 		if (param.get("flag").equals(0) || param.get("flag").equals(2))
 			create_action_obj(Servlet_helper.getdriver()).moveByOffset(offset[0], offset[1]).build().perform();
 
-		return "create_action_obj(Servlet_helper.getdriver()).moveByOffset(" + offset[0] + "," + offset[1] + ").build().perform();";
+		return "create_action_obj(Servlet_helper.getdriver()).moveByOffset(" + offset[0] + "," + offset[1]
+				+ ").build().perform();";
 	}
 
 	/*
@@ -402,7 +407,8 @@ public class Mouse {
 
 	/*
 	 * public static String mouse_tick_action(int[] offset , WebElement
-	 * webElement, int flag, Actions action) { if (param.get("flag").equals(0) || param.get("flag").equals(2))
+	 * webElement, int flag, Actions action) { if (param.get("flag").equals(0)
+	 * || param.get("flag").equals(2))
 	 * action.moveToElement(webElement,offset[0],offset[1]).build().perform();
 	 * String result_webelement =
 	 * Helper.fetch_webelement_string(webElement)+","+offset[0]+","+offset[1];
@@ -418,48 +424,47 @@ public class Mouse {
 	 * @return
 	 *//*
 	 * public static String mouse_tick_interaction(int[] offset, int flag,
-	 * Actions action) { if (param.get("flag").equals(0) || param.get("flag").equals(2))
+	 * Actions action) { if (param.get("flag").equals(0) ||
+	 * param.get("flag").equals(2))
 	 * action.moveByOffset(offset[0],offset[1]).build().perform();
 	 * 
 	 * return "action.moveByOffset(" + offset[0] + "," + offset[1] +
 	 * ").build().perform();"; }
 	 */
-	
-	
-	
+
 	// SendKeys with Action class and data
-		/**
-		 * @author NMakkar
-		 * @param charseq
-		 * @param flag
-		 * @param action
-		 * @return
-		 */
-		public static String mouse_sendKeys(Map<String, Object> param) {
-			WebElement webElement = (WebElement) param.get("element");
+	/**
+	 * @author NMakkar
+	 * @param charseq
+	 * @param flag
+	 * @param action
+	 * @return
+	 */
+	public static String mouse_sendKeys(Map<String, Object> param) {
+		WebElement webElement = (WebElement) param.get("element");
 
-			if (param.get("flag").equals(0) || param.get("flag").equals(2))
-				create_action_obj(Servlet_helper.getdriver()).sendKeys(charseq).build().perform();
+		if (param.get("flag").equals(0) || param.get("flag").equals(2))
+			create_action_obj(Servlet_helper.getdriver()).sendKeys(charseq).build().perform();
 
-			return "action.sendKeys(" + charseq + ").build().perform();";
-		}
+		return "action.sendKeys(" + charseq + ").build().perform();";
+	}
 
-		// SendKeys with Action class , WebElement and data
-		/**
-		 * @author NMakkar
-		 * @param charseq
-		 * @param flag
-		 * @param action
-		 * @param webelement
-		 * @return
-		 */
-		public static String mouse_sendKeys_webelement(Map<String, Object> param) {
-			WebElement webElement = (WebElement) param.get("element");
+	// SendKeys with Action class , WebElement and data
+	/**
+	 * @author NMakkar
+	 * @param charseq
+	 * @param flag
+	 * @param action
+	 * @param webelement
+	 * @return
+	 */
+	public static String mouse_sendKeys_webelement(Map<String, Object> param) {
+		WebElement webElement = (WebElement) param.get("element");
 
-			if (param.get("flag").equals(0) || param.get("flag").equals(2))
-				create_action_obj(Servlet_helper.getdriver()).sendKeys(webElement, charseq).build().perform();
-			String result_webelement = Helper.fetch_webelement_string(webElement) + "," + charseq;
+		if (param.get("flag").equals(0) || param.get("flag").equals(2))
+			create_action_obj(Servlet_helper.getdriver()).sendKeys(webElement, charseq).build().perform();
+		String result_webelement = Helper.fetch_webelement_string(webElement) + "," + charseq;
 
-			return "create_action_obj(Servlet_helper.getdriver()).sendKeys(" + result_webelement + ").build().perform();";
-		}
+		return "create_action_obj(Servlet_helper.getdriver()).sendKeys(" + result_webelement + ").build().perform();";
+	}
 }

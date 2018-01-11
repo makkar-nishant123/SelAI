@@ -1,5 +1,7 @@
 package frontEnd_Utils;
 
+import java.util.Map;
+
 import org.openqa.selenium.WebElement;
 
 import utils.Servlet_helper;

@@ -1,20 +1,25 @@
+
 function generate_actions() {
 	var list_events = [ "--Select--", "Mouse", "Keyboard", "Browser", "JavaScript" , "Screenshot"  , "Validate" , "Database" , "Window", "Tab" , "Alert" , "WebService" , "Wait" , "Dropdown_Select"];
 	var select = [ "--Select--" ];
-	var selectors = [ "--Select--" , "id" , "xpath" , "Css" , "name" , "Tag" , "LinkText" , "PartialLinkText" , "ClassName"];
 
 	var arr = [];
 	var arr1 = [];
+	var arr2 = [];
 
 	var a = parseInt(document.getElementById("count_actions").value);
 	if (a != null) {
 		arr.length = a;
 		arr1.length = a;
+		arr2.length = a;
 		var add_attr = [];
 		add_attr.length = arr.length;
 
 		var add_attr1 = [];
 		add_attr1.length = arr.length;
+		
+		var add_attr2 = [];
+		add_attr2.length = arr2.length;
 		action_form = document.createElement('FORM');
 		action_form.name = 'action_form';
 		action_form.id = 'action_form';
@@ -24,50 +29,59 @@ function generate_actions() {
 	}
 	var div_ch = document.getElementById("div_ch");
 	div_ch.innerHTML = "";
-	div_ch.appendChild(document.createTextNode('EVENTS'));
-	div_ch.appendChild(document.createTextNode('SUB-EVENTS'));
-	div_ch.appendChild(document.createTextNode('WEB-ELEMENT'));
-	div_ch.appendChild(document.createTextNode('DURATION'));
+	div_ch.appendChild(document.createTextNode('Events'));
+	div_ch.appendChild( document.createTextNode( '\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0' ) );
+	div_ch.appendChild(document.createTextNode('Sub-Events'));
+	div_ch.appendChild( document.createTextNode( '\u00A0\u00A0\u00A0' ) );
+	div_ch.appendChild(document.createTextNode('WebElement Count'));
+	div_ch.appendChild( document.createTextNode( '\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0' ) );
+	div_ch.appendChild(document.createTextNode('WebElement(s)'));
+	div_ch.appendChild( document.createTextNode( '\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0' ) );
+	div_ch.appendChild(document.createTextNode('Test-Data'));
+	div_ch.appendChild( document.createTextNode( '\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0' ) );
+	div_ch.appendChild(document.createTextNode('Wait-time'));
 
 	for ( var j = 0; j < a; j++) {
 
 		my_tb1 = document.createElement("select");
 		my_tb2 = document.createElement("select");
-		selector = document.createElement("select");
-		my_tb3 = document.createElement('INPUT');
+		selector_count = document.createElement("select");
 		my_tb4 = document.createElement('INPUT');
 		my_tb5 = document.createElement('INPUT');
 
+		
 		my_tb1.name = "1" + j;
 		my_tb2.name = "2" + j;
-		my_tb3.name = "4" + j;
 		my_tb4.name = "5" + j;
-		selector.name = "3" + j;
+		selector_count.name = "7" + j;
 		my_tb5.name = "6" + j;
 		my_tb1.id = "1" + j;
 		my_tb2.id = "2" + j;
-		my_tb3.id = "4" + j;
 		my_tb4.id = "5" + j;
 				my_tb5.id = "6" + j;
-		selector.id = "3" + j;
+		selector_count.id = "7" + j;
 		arr[j] = "1" + j;
 		arr1[j] = "2" + j;
-
+		arr2[j] = "7" + j;
+		
+		
+	
 		action_form.appendChild(my_tb1);
 		action_form.appendChild(document.createTextNode(" "));
 		action_form.appendChild(my_tb2);
 		action_form.appendChild(document.createTextNode(" "));
-		action_form.appendChild(selector);
+		action_form.appendChild(selector_count);
 		action_form.appendChild(document.createTextNode(" "))
-		action_form.appendChild(my_tb3);
-		action_form.appendChild(document.createTextNode(" "));
 		action_form.appendChild(my_tb4);
 		action_form.appendChild(document.createTextNode(" "));
 		action_form.appendChild(my_tb5);
 		action_form.appendChild(document.createTextNode(" "));
 		action_form.appendChild(document.createElement("br"));
 
+		
+		
 		div_ch.appendChild(action_form);
+		
 		for ( var i = 0; i < list_events.length; i++) {
 			var option = document.createElement("option");
 			option.value = list_events[i];
@@ -75,11 +89,11 @@ function generate_actions() {
 			my_tb1.appendChild(option);
 		}
 
-for ( var i = 0; i < selectors.length; i++) {
+for ( var i = 0; i <= 10; i++) {
 			var option = document.createElement("option");
-			option.value = selectors[i];
-			option.text = selectors[i];
-			selector.appendChild(option);
+			option.value = i;
+			option.text = i;
+			selector_count.appendChild(option);
 		}
 
 		var option = document.createElement("option");
@@ -100,15 +114,89 @@ for ( var i = 0; i < selectors.length; i++) {
 		}, false);
 
 	}
+	
+	for ( var i = 0; i < arr2.length; i++) {
+var previous;
+		add_attr2[i] = document.getElementById(arr2[i])
+		add_attr2[i].addEventListener('focus', function(){
+			
+			previous = this.value;
+			console.log(previous);
+			
+		}, false);
+		add_attr2[i].addEventListener('change', function() {
+var size = parseInt(document.getElementById(this.id).value);
+			
+			create_webelement(previous , size , this.id );
+		}, false);
+
+	}
 
 	var formData1 = JSON.stringify($("#action_form").serializeArray());
 
 }
 
+function create_webelement(previous , size , data) {
+
+			var selectors = [ "--Select--" , "id" , "xpath" , "Css" , "name" , "Tag" , "LinkText" , "PartialLinkText" , "ClassName"];
+			data1 = parseInt(data) - 10;
+		
+	
+		for(m =0 ; m < previous ; m++)
+		{	
+			dataidx1 = data + parseInt(m);
+	br = document.createElement("br");
+
+
+			ele = document.getElementById(dataidx1);
+						ele.remove();
+
+			ele2 = document.getElementById(dataidx1);
+				
+			ele2.remove();
+			
+		}	
+		
+		
+	var data_id = document.getElementById(data1);
+
+	for (j = 0 ; j < size ; j++)
+	{
+	selector = document.createElement("select");
+	my_tb3 = document.createElement('INPUT');
+	br = document.createElement("br");
+	my_tb3.name = data  + j;
+	selector.name = data + j;
+	my_tb3.id =data + j;
+	selector.id = data + j;
+	
+	
+	
+			for ( var i = 0; i <= selectors.length; i++) {
+			var option = document.createElement("option");
+			option.value = selectors[i];
+			option.text = selectors[i];
+			selector.appendChild(option)
+			
+			
+		}
+
+			action_form.insertBefore(my_tb3,data_id.nextSibling);
+			action_form.insertBefore(selector,data_id.nextSibling);
+
+
+	}
+
+	
+			
+
+}
+
+
 function process_data(data, data2) {
 		var list_events = [ "--Select--", "Mouse", "Keyboard", "Browser", "JavaScript" , "Screenshot"  , "Validate" , "Database" , "Window", "Tab" , "Alert" , "WebService" , "Wait" , "Dropdown_Select"];
 
-	var Mouse = [ "--Select--", "Click", "DodubleClick", "ClickandHold" , "ContextClick", "DragDrop" ,  "Hover" ];
+	var Mouse = [ "--Select--", "click", "DodubleClick", "ClickandHold" , "ContextClick", "DragDrop" ,  "Hover" , "Submit" ];
 	var Keyboard = [ "--Select--", "write_text" ];
 	var Browser = [ "--Select--", "GotoURL", "Maximize"  ,"Refresh", "Close" ];
 	var JavaScript = [ "--Select--", "Click", "EnterData", "DodubleClick" , "ClickandHold" , "ContextClick", "DragDrop" ,  "Hover"];
@@ -258,6 +346,8 @@ case "WebService": {
 			ele1.appendChild(option);
 	}
 }
+
+
 
 function generate_text_box(data) {
 	var div_ch1 = document.getElementById('div_ch1');
