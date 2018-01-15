@@ -108,7 +108,7 @@ for ( var i = 0; i <= 10; i++) {
 		add_attr[i] = document.getElementById(arr[i])
 		add_attr1[i] = document.getElementById(arr1[i])
 		add_attr[i].addEventListener('change', function() {
-
+			
 			id2 = parseInt(this.id) + 10;
 			process_data(this.id, id2);
 		}, false);
@@ -121,8 +121,7 @@ var previous;
 		add_attr2[i].addEventListener('focus', function(){
 			
 			previous = this.value;
-			console.log(previous);
-			
+			console.log(previous)
 		}, false);
 		add_attr2[i].addEventListener('change', function() {
 var size = parseInt(document.getElementById(this.id).value);
@@ -137,7 +136,7 @@ var size = parseInt(document.getElementById(this.id).value);
 }
 
 function create_webelement(previous , size , data) {
-
+console.log("I/P");
 			var selectors = [ "--Select--" , "id" , "xpath" , "Css" , "name" , "Tag" , "LinkText" , "PartialLinkText" , "ClassName"];
 			data1 = parseInt(data) - 10;
 		
@@ -149,10 +148,14 @@ function create_webelement(previous , size , data) {
 
 
 			ele = document.getElementById(dataidx1);
-						ele.remove();
+console.log("OUT");
+					if(ele != null ){
 
+console.log(ele);
+						ele.remove();
+}
 			ele2 = document.getElementById(dataidx1);
-				
+				if(ele2 != null)
 			ele2.remove();
 			
 		}	
@@ -180,11 +183,10 @@ function create_webelement(previous , size , data) {
 			
 			
 		}
-
+			action_form.insertBefore(br,data_id);
 			action_form.insertBefore(my_tb3,data_id.nextSibling);
 			action_form.insertBefore(selector,data_id.nextSibling);
-
-
+action_form.insertBefore(br,data_id.nextSibling);
 	}
 
 	
@@ -381,3 +383,4 @@ function generate_text_box(data) {
 		}
 	}
 }
+
