@@ -4,6 +4,8 @@ package initiate;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.HashMap;
+import java.util.Map.Entry;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -24,7 +26,7 @@ public class Selenium_init extends HttpServlet {
 		String input = Servlet_helper.read_input_servlet(req);
 
 		HashMap<String, String> out_map = Servlet_helper.get_value(input);
-
+		 
 		switch (out_map.get("type_e")) {
 		case "Execute":
 			Servlet_helper.execute(out_map,0);
@@ -44,12 +46,14 @@ public class Selenium_init extends HttpServlet {
 	
 	  public static void main(String[] args) { 
 		  String input =
-				  "[{\"name\":\"type_e\",\"value\":\"Execute\"},{\"name\":\"browser\",\"value\":\"Chrome\"},{\"name\":\"URL\",\"value\":\"https://www.joecolantonio.com\"},{\"name\":\"count_actions\",\"value\":\"3\"},{\"name\":\"close_browser\",\"value\":\"NO\"},{\"name\":\"kill_drivers\",\"value\":\"NO\"}][{\"name\":\"10\",\"value\":\"Keyboard\"},{\"name\":\"20\",\"value\":\"write_text\"},{\"name\":\"30\",\"value\":\"xpath\"},{\"name\":\"40\",\"value\":\"(.//*[@name='fields[first_name]'])[1]\"},{\"name\":\"50\",\"value\":\"sdfsfgs\"},{\"name\":\"60\",\"value\":\"\"},{\"name\":\"11\",\"value\":\"Keyboard\"},{\"name\":\"21\",\"value\":\"write_text\"},{\"name\":\"31\",\"value\":\"xpath\"},{\"name\":\"41\",\"value\":\"(.//*[@name='fields[email]'])[1]\"},{\"name\":\"51\",\"value\":\"test@gmail.com\"},{\"name\":\"61\",\"value\":\"\"},{\"name\":\"12\",\"value\":\"Mouse\"},{\"name\":\"22\",\"value\":\"Click\"},{\"name\":\"32\",\"value\":\"xpath\"},{\"name\":\"42\",\"value\":\"(.//*[@value='FREE UPDATES'])[1]\"},{\"name\":\"52\",\"value\":\"\"},{\"name\":\"62\",\"value\":\"\"}]";		  
-		  
-	  HashMap<String, String> out_map = Servlet_helper.get_value(input);
-	
+				  "[{\"name\":\"type_e\",\"value\":\"Execute\"},{\"name\":\"browser\",\"value\":\"Chrome\"},{\"name\":\"URL\",\"value\":\"https://www.joecolantonio.com\"},{\"name\":\"count_actions\",\"value\":\"1\"},{\"name\":\"close_browser\",\"value\":\"YES\"},{\"name\":\"kill_drivers\",\"value\":\"YES\"}][{\"name\":\"10\",\"value\":\"Keyboard\"},{\"name\":\"20\",\"value\":\"write_text\"},{\"name\":\"70\",\"value\":\"1\"},{\"name\":\"50\",\"value\":\"fsd\"},{\"name\":\"60\",\"value\":\"\"},{\"name\":\"700\",\"value\":\"xpath\"},{\"name\":\"7000\",\"value\":\"(.//*[@name='fields[first_name]'])[1]\"}]";				  
+				  HashMap<String, String> out_map = Servlet_helper.get_value(input);
+		
+			 for (Entry s : out_map.entrySet()){
+					  System.out.println(s.getKey());
+				  System.out.println(s.getValue());}
+				// Servlet_helper.execute(out_map,0);
 	  
-	  Servlet_helper.execute(out_map,0);
 	  
 	  }
 	 

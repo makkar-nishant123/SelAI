@@ -69,6 +69,7 @@ public class Servlet_helper {
 		// TODO Auto-generated method stub
 
 		if (!out_map.get("browser").equals(null) && !out_map.get("browser").equals("")) {
+			
 			driver = Browser.getBrowser(out_map.get("browser"), out_map.get("URL"), flag , getdriver());
 			if (flag == 1 || flag == 2)
 				method_code = "Browsers.getBrowser(\"" + out_map.get("browser") + "\",\"" + out_map.get("URL") + "\""
@@ -82,21 +83,62 @@ public class Servlet_helper {
 			method_code += Browser.kill_browser_drivers(out_map.get("browser"), flag ,  getdriver());
 		
 		for (int i = 0; i < Integer.parseInt(out_map.get("count_actions")); i++) {
+			int temp = i + 70;
+			WebElement[] array_element = new WebElement[10];
 			WebElement element;
 			List<WebElement> listelement;
-			//if (out_map.get(String.valueOf(i + 40)).contains("&"))
-			if (out_map.get("count_actions").contains("list")) {
-				listelement = Select_locator.select_elements(out_map.get(String.valueOf(i + 30)), out_map.get(String.valueOf(i + 40)), driver);
-				method_code += Call_methods.frame_class_method_param(out_map.get(String.valueOf(i + 10)), out_map.get(String.valueOf(i + 20)), out_map.get(String.valueOf(i + 50)),
-						out_map.get(String.valueOf(i + 60)), listelement, flag, method_code);
-				
+			 List<List<WebElement>> listoflist;
+			 String element_count = out_map.get(String.valueOf(i + 70));
 
-			} else {
-				element = Select_locator.select(out_map.get(String.valueOf(i + 30)), out_map.get(String.valueOf(i + 40)), driver);
-				method_code += Call_methods.frame_class_method_param(out_map.get(String.valueOf(i + 10)), out_map.get(String.valueOf(i + 20)), out_map.get(String.valueOf(i + 50)),
-						out_map.get(String.valueOf(i + 60)), element, flag, method_code);
+			 if(element_count.equals("1"))
+			 {
+				 String first = String.valueOf(temp) + "0";
+				 String second = String.valueOf(temp) + "0" + "0";
+				 if(out_map.get(first).contains("list"))
+				 {
+					 listelement = Select_locator.select_elements(out_map.get(first), out_map.get(second), driver);
+						method_code += Call_methods.frame_class_method_param(out_map.get(String.valueOf(i + 10)), out_map.get(String.valueOf(i + 20)), out_map.get(String.valueOf(i + 50)),
+								out_map.get(String.valueOf(i + 60)), listelement, flag, method_code);
+				 }
+				 else
+				 {
+					 element = Select_locator.select(out_map.get(first), out_map.get(second), driver);
+					method_code += Call_methods.frame_class_method_param(out_map.get(String.valueOf(i + 10)), out_map.get(String.valueOf(i + 20)), out_map.get(String.valueOf(i + 50)),
+							out_map.get(String.valueOf(i + 60)), element, flag, method_code);
+				 }
+			 }
+			  if(Integer.parseInt(element_count) > 1)
+			 {
+				  String first ;
+				  String second;
+				  for  (int k = 0  ; k <Integer.parseInt(element_count) ; k++)
+				  {			
+					  first = String.valueOf(temp) + String.valueOf(k) ;
+					  second = String.valueOf(temp) + String.valueOf(k) + "0";
+					  
+				 
+				  
+				  if(out_map.get(String.valueOf(first).contains("list")) != null)
+					 {
+						 listelement = Select_locator.select_elements(out_map.get(first), out_map.get(second), driver);
+							method_code += Call_methods.frame_class_method_param(out_map.get(String.valueOf(i + 10)), out_map.get(String.valueOf(i + 20)), out_map.get(String.valueOf(i + 50)),
+									out_map.get(String.valueOf(i + 60)), listelement, flag, method_code);
+					 }
+					 else
+					 {
+						 array_element[k] = Select_locator.select(out_map.get(first), out_map.get(second), driver);
+						method_code += Call_methods.frame_class_method_param(out_map.get(String.valueOf(i + 10)), out_map.get(String.valueOf(i + 20)), out_map.get(String.valueOf(i + 50)),
+								out_map.get(String.valueOf(i + 60)), array_element[k], flag, method_code);
+					 }
+				  }
+			 }
+			 if(element_count.equals("0"))
+			 {
 				
-			}
+					method_code += Call_methods.frame_class_method_param(out_map.get(String.valueOf(i + 10)), out_map.get(String.valueOf(i + 20)), out_map.get(String.valueOf(i + 50)),
+							out_map.get(String.valueOf(i + 60)),  flag, method_code);
+			 }
+					 
 		}
 		
 		
@@ -155,5 +197,14 @@ public class Servlet_helper {
 
 		return stringBuilder.toString();
 
+	}
+	
+	public static void main(String[] args) {
+		int a = 71;
+		for(int i = 0 ; i < 4; i++)
+		{
+			System.out.println(String.valueOf(a) + String.valueOf(i));
+			System.out.println(String.valueOf(a) + String.valueOf(i) + String.valueOf(0));
+		}
 	}
 }
